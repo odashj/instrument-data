@@ -83,7 +83,13 @@
 
     var data4 = [
     { "name": "White employee in Senior or higher role", "value": 133},
-    { "name": "Non-white employee in Senior or higher role", "value": 33}
+    { "name": "Asian employee in Senior or higher role", "value": 10},
+    { "name": "Latinx employee in Senior or higher role", "value": 6},
+    { "name": "Multi-racial employee in Senior or higher role", "value": 7},
+    { "name": "Native Hawaiian or Other Pacific Islander employee in Senior or higher role", "value": 6},
+        { "name": "Black employee in Senior or higher role", "value": 5},
+    { "name": "Indigenous / American Indian employee in Senior or higher role", "value": 0}
+
     ]
 
     var chart4 = d3waffle()
@@ -122,7 +128,13 @@
 
  var data6 = [
  { "name": "White employees in design + writing", "value": 77},
- { "name": "Non-white employees in design + writing", "value": 21}
+ { "name": "Asian employees in design + writing", "value": 10},
+ { "name": "Latinx employees in design + writing", "value": 6},
+ { "name": "Multi-racial employees in design + writing", "value": 2},
+ { "name": "Native Hawaiian or Other Pacific Islander employees in design + writing", "value": 2},
+  { "name": "Black employees in design + writing", "value": 1},
+ { "name": "Indigenous / American Indian employees in design + writing", "value": 0}
+
  ]
 
  var chart6 = d3waffle()
@@ -141,7 +153,12 @@
 
     var data7 = [
     { "name": "White employees in Account & Project Management", "value": 45},
-    { "name": "Non-white employees in Account & Project Management", "value": 9}
+    { "name": "Asian employees in Account & Project Management", "value": 3},
+    { "name": "Latinx employees in Account & Project Management", "value": 0},
+    { "name": "Multi-racial employees in Account & Project Management", "value": 3},
+    { "name": "Native Hawaiian or Other Pacific Islander employees in Account & Project Management", "value": 0},
+       { "name": "Black employees in Account & Project Management", "value": 1},
+    { "name": "Indigenous / American Indian employees in Account & Project Management", "value": 0}
     ]
 
     var chart7 = d3waffle()
@@ -159,7 +176,12 @@
 
     var data8 = [
     { "name": "White employees in Technology & Innovation", "value": 24},
-    { "name": "Non-white employees in Technology & Innovation", "value": 13}
+   { "name": "Asian employees in Technology & Innovation", "value": 3},
+    { "name": "Latinx employees in Technology & Innovation", "value": 0},
+    { "name": "Multi-racial employees in Technology & Innovation", "value": 3},
+    { "name": "Native Hawaiian or Other Pacific Islander employees in Technology & Innovation", "value": 0},
+       { "name": "Black employees in Technology & Innovation", "value": 1},
+    { "name": "Indigenous / American Indian employees in Technology & Innovation", "value": 0}
     ]
 
     var chart8 = d3waffle()
@@ -177,7 +199,12 @@
 
     var data9 = [
     { "name": "White employees in Business Operations", "value": 19},
-    { "name": "Non-white employees in Business Operations", "value": 8}
+  { "name": "Asian employees in Business Operations", "value": 2},
+    { "name": "Latinx employees in Business Operations", "value": 2},
+    { "name": "Multi-racial employees in Business Operations", "value": 2},
+    { "name": "Native Hawaiian or Other Pacific Islander employees in Business Operations", "value": 0},
+       { "name": "Black employees in Business Operations", "value": 2},
+    { "name": "Indigenous / American Indian employees in Business Operations", "value": 0}
     ]
 
     var chart9 = d3waffle()
@@ -195,7 +222,12 @@
 
      var data10 = [
      { "name": "White employees in Strategy & Research ", "value": 17},
-     { "name": "Non-white employees in Strategy & Research ", "value": 8}
+{ "name": "Asian employees in Business Operations", "value": 2},
+    { "name": "Latinx employees in Business Operations", "value": 1},
+    { "name": "Multi-racial employees in Business Operations", "value": 0},
+    { "name": "Native Hawaiian or Other Pacific Islander employees in Business Operations", "value": 4},
+       { "name": "Black employees in Business Operations", "value": 1},
+    { "name": "Indigenous / American Indian employees in Business Operations", "value": 0}
      ]
 
      var chart10 = d3waffle()
@@ -207,7 +239,30 @@
 
      d3.select("#container-10")
      .datum(data10)
-     .call(chart10);  
+     .call(chart10); 
+
+     // chart 11
+
+     var data11 = [
+     { "name": "White Employee", "value": 182},
+     { "name": "Asian Employee", "value": 19},
+     { "name": "Latinx Employee", "value": 12},
+     { "name": "Multi-racial Employee", "value": 10},
+     { "name": "Native Hawaiian or Other Pacific Islander", "value": 9},
+          { "name": "Black Employee", "value": 9},
+     { "name": "Indigenous / American Indian", "value": 0}
+     ]
+
+     var chart11 = d3waffle()
+     .rows(8)
+     .scale(1)
+     .colorscale(d3.scale.category10())
+     .height(100);
+
+
+     d3.select("#container-11")
+     .datum(data11)
+     .call(chart11);  
 
    });
 
@@ -232,6 +287,14 @@
       <div class="col-md-8 col-md-offset-2">
         <h4>Of those 241 employees, 182 are white</h4>
         <div class="container" id="container-2">
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>Full demographic breakdown</h4>
+        <div class="container" id="container-11">
         </div>
       </div>
     </div>
@@ -266,57 +329,57 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <h4>There are 21 non-white employees in the design + writing discipline</h4>
-          <div class="container" id="container-6">
-          </div>
+        <div class="container" id="container-6">
         </div>
       </div>
-      <hr>
+    </div>
+    <hr>
 
-      <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-          <h4>There are 9 non-white employees in the Account & Project Management discipline</h4>
-            <div class="container" id="container-7">
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>There are 9 non-white employees in the Account & Project Management discipline</h4>
+        <div class="container" id="container-7">
         </div>
-        <hr>
-
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <h4>There are 13 non-white employees in the Technology & Innovation discipline</h4>
-            <div class="container" id="container-8">
-            </div>
-          </div>
-        </div>
-        <hr>
-
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <h4>There are 8 non-white employees in the Business Operations discipline</h4>
-            <div class="container" id="container-9">
-            </div>
-          </div>
-        </div>
-        <hr>
-
-        <div class="row">
-          <div class="col-md-8 col-md-offset-2">
-            <h4>There are 8 non-white employees in the Strategy & Research discipline</h4>
-            <div class="container" id="container-10">
-            </div>
-          </div>
-        </div>
-
       </div>
-    </body>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </div>
+    <hr>
 
-      ga('create', 'UA-17670833-7', 'auto');
-      ga('send', 'pageview');
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>There are 13 non-white employees in the Technology & Innovation discipline</h4>
+        <div class="container" id="container-8">
+        </div>
+      </div>
+    </div>
+    <hr>
 
-    </script>
-    </html>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>There are 8 non-white employees in the Business Operations discipline</h4>
+        <div class="container" id="container-9">
+        </div>
+      </div>
+    </div>
+    <hr>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h4>There are 8 non-white employees in the Strategy & Research discipline</h4>
+        <div class="container" id="container-10">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17670833-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>

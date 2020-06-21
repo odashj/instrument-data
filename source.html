@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>d3-waffle</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/paper/bootstrap.min.css" media="screen" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+      body {
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .container {
+        width: 100%;
+      }
+    </style>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" type="text/javascript"></script>
+    <script src="d3-waffle.js" type="text/javascript"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
+    <script type="text/javascript">
+      $(function() {
+
+        var chart = d3waffle();
+
+        d3.select("#container-1")
+          .datum(data)
+          .call(chart);
+
+        var chart2 = d3waffle()
+                      .rows(6)
+                      .scale(0.5)
+                      .height(100);
+        d3.select("#container-2")
+          .datum(data)
+          .call(chart2);
+
+        var chart3 = d3waffle()
+                        .rows(5)
+                        .scale(1/4)
+                        .icon("&#xf1b9;")
+                        .adjust(0.425)
+                        .colorscale(d3.scale.category10())
+                        .appearancetimes(function(d, i){
+                          mod = 13;
+                          val = i % mod;
+                          return val / mod * 1500;
+                        })
+                        .height(200);
+
+        d3.select("#container-3")
+          .datum(data)
+          .call(chart3);
+
+        var data2 = [
+          { "name": "Mortgage ($84,911)", "value": 84911},
+          { "name": "Auto and\ntuition loans ($14,414)", "value": 14414},
+          { "name": "Home equity loans ($10,062)", "value": 10062},
+          { "name": "Credit Cards ($8,565)", "value": 8565}
+        ]
+
+        /* to color elements we use the class name ( slugigy(name) ) */
+        var domain = data2.map(function(d){ return slugify(d.name); })
+        var range = ["#c7d4b6", "#a3aabd", "#a0d0de", "#97b5cf"]
+        var palette = d3.scale.ordinal().domain(domain).range(range);
+
+        var chart4 = d3waffle()
+                        .rows(7)
+                        .scale(1/392/2)
+                        .colorscale(palette)
+                        .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
+                        .height(120);
+
+        d3.select("#container-4")
+          .datum(data2)
+          .call(chart4);        
+
+      });
+
+      var data = [
+        { "name": "type 1", "value": 102},
+        { "name": "type 2", "value": 65},
+        { "name": "type 3", "value": 43},
+        { "name": "type 4", "value": 12}
+      ];
+    </script>
+</head>
+
+<body>
+    <a href="https://github.com/jbkunst/d3-waffle"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>d3-waffle<small> I'm hungry for data!</small></h3>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <iframe src="https://ghbtns.com/github-btn.html?user=jbkunst&repo=d3-waffle&type=star&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                <iframe src="https://ghbtns.com/github-btn.html?user=jbkunst&repo=d3-waffle&type=fork&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+                <iframe src="https://ghbtns.com/github-btn.html?user=jbkunst&type=follow&count=true" frameborder="0" scrolling="0" width="170px" height="20px"></iframe>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h4>Introduction</h4>
+                <p><strong>d3-waffle</strong>  is a waffle (viz) maker <em>a la</em> D3. </p>
+                
+                <h4>How to use</h4>
+                
+                <ol>
+                  <li>Choose your selector!</li>
+                  <li>Prepare your data like <code>[{ name: "yay!", value: 80}, ...]</code></li>
+                  <li>Cook the <code>d3waffle()</code> with your parameters </li>
+                  <li>And eat it!</li>
+                </ol>
+                
+                <h4>Examples</h4>
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Example 1: Basic</h3>
+                    </div>
+                    <div class="panel-body">
+                      <pre><code id="code-ex-1">
+var data = [
+  { "name": "type 1", "value": 102},
+  { "name": "type 2", "value": 65},
+  { "name": "type 3", "value": 43},
+  { "name": "type 4", "value": 12}
+];
+
+var chart = d3waffle();
+
+d3.select("#container-1")
+  .datum(data)
+  .call(chart);
+                      </code></pre>
+                      <div class="container" id="container-1">
+                      </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Example 2: Basic</h3>
+                    </div>
+                    <div class="panel-body">
+                      <pre><code id="code-ex-2">
+var chart2 = d3waffle()
+              .rows(6)
+              .scale(0.5)
+              .height(100);
+
+d3.select("#container-2")
+  .datum(data)
+  .call(chart2);
+                        </code></pre>
+                      <div class="container" id="container-2">
+                      </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Example 3: Font Awesome Integration</h3>
+                    </div>
+                    <div class="panel-body">
+                      <pre><code id="code-ex-3">
+var chart3 = d3waffle()
+                .rows(5)
+                .scale(1/3)
+                .icon("&#xf1b9;")
+                .adjust(0.425)
+                .colorscale(d3.scale.category10())
+                .appearancetimes(function(d, i){
+                  mod = 13;
+                  val = i % mod;
+                  return val / mod * 1500;
+                })
+                .height(200);
+
+d3.select("#container-3")
+  .datum(data)
+  .call(chart3);
+                        </code></pre>
+                      <div class="container" id="container-3">
+                      </div>
+                    </div>
+                </div>
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Example 4: A more detail example</h3>
+                    </div>
+                    <div class="panel-body">
+                      <p>A relative more complex:
+Source <a href="https://github.com/hrbrmstr/waffle">https://github.com/hrbrmstr/waffle</a> from <a href="http://www.nytimes.com/2008/07/20/business/20debt.html">http://www.nytimes.com/2008/07/20/business/20debt.html</a></p>
+                      <pre><code id="code-ex-4">
+var data2 = [
+  { "name": "Mortgage ($84,911)", "value": 84911},
+  { "name": "Auto and\ntuition loans ($14,414)", "value": 14414},
+  { "name": "Home equity loans ($10,062)", "value": 10062},
+  { "name": "Credit Cards ($8,565)", "value": 8565}
+]
+
+/* to color elements we use the class name ( slugigy(name) ) */
+var domain = data2.map(function(d){ return slugify(d.name); })
+var range = ["#c7d4b6", "#a3aabd", "#a0d0de", "#97b5cf"]
+var palette = d3.scale.ordinal().domain(domain).range(range);
+
+var chart4 = d3waffle()
+                .rows(7)
+                .scale(1/392/2)
+                .colorscale(palette)
+                .appearancetimes(function(d, i){ return i*10 + Math.random()*250;})
+                .height(120);
+
+d3.select("#container-4")
+  .datum(data2)
+  .call(chart4);     
+                       </code></pre>
+                      <div class="container" id="container-4">
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <footer>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <p class="pull-left">Made by <a href="github.com/jbkunst">Joshua Kunst</a></p>
+                    <p class="pull-right">Page made on <a href="http://getbootstrap.com" rel=
+                    "nofollow">Bootstrap</a>. Icons from <a href=
+                    "http://fortawesome.github.io/Font-Awesome/" rel=
+                    "nofollow">Font Awesome</a>. Web fonts from <a href=
+                    "http://www.google.com/webfonts" rel=
+                    "nofollow">Google</a>.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-17670833-7', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</html>
